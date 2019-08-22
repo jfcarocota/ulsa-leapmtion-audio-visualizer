@@ -6,6 +6,7 @@ public class AudioVisualizer : MonoBehaviour
 {
 
     float[] spectrum;
+    public float frequency {get; set;}
 
  
     AudioSource music;
@@ -19,7 +20,12 @@ public class AudioVisualizer : MonoBehaviour
    {
         music.GetSpectrumData(spectrum, 0, FFTWindow.Rectangular);
 
-        Debug.Log(spectrum[10]);
+        for (int i = 1; i < spectrum.Length - 1; i++)
+        {
+            frequency = spectrum[i];
+        }
+
+        /* Debug.Log(spectrum[10]);
 
         for (int i = 1; i < spectrum.Length - 1; i++)
         {
@@ -27,6 +33,6 @@ public class AudioVisualizer : MonoBehaviour
             Debug.DrawLine(new Vector3(i - 1, Mathf.Log(spectrum[i - 1]) + 10, 2), new Vector3(i, Mathf.Log(spectrum[i]) + 10, 2), Color.cyan);
             Debug.DrawLine(new Vector3(Mathf.Log(i - 1), spectrum[i - 1] - 10, 1), new Vector3(Mathf.Log(i), spectrum[i] - 10, 1), Color.green);
             Debug.DrawLine(new Vector3(Mathf.Log(i - 1), Mathf.Log(spectrum[i - 1]), 3), new Vector3(Mathf.Log(i), Mathf.Log(spectrum[i]), 3), Color.blue);
-        }  
+        }  */
    }
 }
