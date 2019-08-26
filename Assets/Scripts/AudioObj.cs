@@ -20,6 +20,8 @@ public class AudioObj : MonoBehaviour {
         High
     }
 
+    float freq;
+
     [SerializeField]
     FreqType freqType;
 
@@ -30,7 +32,19 @@ public class AudioObj : MonoBehaviour {
 
     void Update()
     {
-        float freq = audioVisualizer.frequency;
+
+        switch(freqType)
+        {
+            case FreqType.Low:
+                freq = audioVisualizer.LowFreq;
+                break;
+            case FreqType.Mid:
+                freq = audioVisualizer.MidFreq;
+                break;
+            case FreqType.High:
+                freq = audioVisualizer.HighFreq;
+                break;
+        }
 
         Vector3 newScale = new Vector3(freq, freq, freq) * scaleFactor;
         transform.localScale = newScale + initialScale;

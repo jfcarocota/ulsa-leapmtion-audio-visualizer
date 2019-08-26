@@ -28,6 +28,23 @@ public class AudioVisualizer : MonoBehaviour
             frequency = spectrum[i];
 
             lowFreq = frequency >= 20f || frequency <= 200 ? frequency : lowFreq;
+            midFreq = frequency > 200f || frequency <= 5000 ? frequency : midFreq;
+            highFreq = frequency > 5000f ? frequency : highFreq;
         }
+   }
+
+   public float LowFreq
+   {
+       get => lowFreq;
+   }
+
+   public float MidFreq
+   {
+       get => midFreq;
+   }
+
+   public float HighFreq
+   {
+       get => highFreq;
    }
 }
