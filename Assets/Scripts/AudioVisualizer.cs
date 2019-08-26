@@ -13,8 +13,20 @@ public class AudioVisualizer : MonoBehaviour
     float highFreq;
 
     AudioSource music;
+
+    public static AudioVisualizer instance;
+
     void Start()
     {
+        if(!instance)
+        {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         spectrum = new float[256];
         music = GetComponent<AudioSource>();
     }
@@ -27,9 +39,9 @@ public class AudioVisualizer : MonoBehaviour
         {
             frequency = spectrum[i];
 
-            lowFreq = frequency >= 20f || frequency <= 200 ? frequency : lowFreq;
-            midFreq = frequency > 200f || frequency <= 5000 ? frequency : midFreq;
-            highFreq = frequency > 5000f ? frequency : highFreq;
+            lowFreq = frequency < 200f ? frequency : lowFreq;
+            midFreq = frequency > 200f || frequency <= 5000f ? frequency : midFreq;
+            highFreq = frequency > 5000f || frequency < 20000f ? frequency : highFreq;
         }
    }
 

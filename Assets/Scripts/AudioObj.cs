@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class AudioObj : MonoBehaviour {
 
-    [SerializeField]
-    AudioVisualizer audioVisualizer;
-
     Vector3 initialScale;
 
     [SerializeField]
@@ -36,13 +33,13 @@ public class AudioObj : MonoBehaviour {
         switch(freqType)
         {
             case FreqType.Low:
-                freq = audioVisualizer.LowFreq;
+                freq = AudioVisualizer.instance.LowFreq;
                 break;
             case FreqType.Mid:
-                freq = audioVisualizer.MidFreq;
+                freq = AudioVisualizer.instance.MidFreq;
                 break;
             case FreqType.High:
-                freq = audioVisualizer.HighFreq;
+                freq = AudioVisualizer.instance.HighFreq;
                 break;
         }
 
