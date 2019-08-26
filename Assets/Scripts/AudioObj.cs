@@ -12,6 +12,17 @@ public class AudioObj : MonoBehaviour {
     [SerializeField]
     float scaleFactor;
 
+    [SerializeField]
+    public enum FreqType
+    {
+        Low,
+        Mid,
+        High
+    }
+
+    [SerializeField]
+    FreqType freqType;
+
     void Start()
     {
         initialScale = transform.localScale;
